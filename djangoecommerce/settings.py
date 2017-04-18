@@ -186,11 +186,11 @@ AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY', '')
 AWS_STORAGE_BUCKET_NAME = 'djangoecommerce10'
 AWS_S3_CUSTOM_DOMAIN = 's3.amazonaws.com/%s' % AWS_STORAGE_BUCKET_NAME
 
-STATICFILES_STORAGE = 'djangoecommerce.s3util.StaticStorage'
-STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+#STATICFILES_STORAGE = 'djangoecommerce.s3util.StaticStorage'
+#STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
 
-DEFAULT_FILE_STORAGE = 'djangoecommerce.s3util.MediaStorage'
-MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+#DEFAULT_FILE_STORAGE = 'djangoecommerce.s3util.MediaStorage'
+#MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 
 AWS_HEADERS = {
     'x-amz-acl': 'public-read',
@@ -203,7 +203,7 @@ THUMBNAIL_ALIASES = {
         'product_image': {'size': (285, 160), 'crop': True},
     },
 }
-THUMBNAIL_DEFAULT_STORAGE = DEFAULT_FILE_STORAGE
+#THUMBNAIL_DEFAULT_STORAGE = DEFAULT_FILE_STORAGE
 
 try:
     from .local_settings import *
