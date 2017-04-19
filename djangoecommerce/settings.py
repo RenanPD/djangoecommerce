@@ -145,7 +145,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 EMAIL_HOST = ''
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
-DEFAULT_FROM_EMAIL = 'admin@djangoecommerce.com'
+DEFAULT_FROM_EMAIL = 'renandidou@gmail.com'
 
 # auth
 LOGIN_URL = 'login'
@@ -168,11 +168,11 @@ MESSAGE_TAGS = {
 }
 
 PAGSEGURO_TOKEN = ''
-PAGSEGURO_EMAIL = 'contato@gilenofilho.com.br'
+PAGSEGURO_EMAIL = 'renandidou@gmail.com'
 PAGSEGURO_SANDBOX = True
 
 PAYPAL_TEST = True
-PAYPAL_EMAIL = 'contato@gilenofilho.com.br'
+PAYPAL_EMAIL = 'renandidou@gmail.com'
 
 # AWS
 STATICFILES_LOCATION = 'static'
