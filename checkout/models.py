@@ -6,6 +6,8 @@ from django.conf import settings
 from catalog.models import Product
 
 
+
+
 class CartItemManager(models.Manager):
 
     def add_item(self, cart_key, product):
@@ -101,6 +103,41 @@ class Order(models.Model):
             )
         )
         return aggregate_queryset['total']
+
+    def pagseguro_update_status(self, status):
+        if status == '3':
+            self.status = 1
+        elif status == '7':
+            self.status = 2
+        self.save()
+
+    def complete(self):
+        self.status = 1
+        self.save()
+
+    def pagseguro(self):
+        self.payment_option = 'pagseguro'
+        self.save()
+        pg = PagSeguro(
+            email=settings.PAGSEGURO_EMAIL, token=settings.PAGSEGURO_TOKEN,
+            config={'sandbox': settings.PAGSEGURO_SANDBOX}
+        )
+        pg.sender = {
+            'email': self.user.email
+        }
+        pg.reference_prefix = ''
+        pg.shipping = None
+        pg.reference = self.pk
+        for item in self.items.all():
+            pg.items.append(
+                {
+                    'id': item.product.pk,
+                    'description': item.product.name,
+                    'quantity': item.quantity,
+                    'amount': '%.2f' % item.price
+                }
+            )
+        return pg
 
     def paypal(self):
         self.payment_option = 'paypal'
