@@ -146,6 +146,7 @@ EMAIL_HOST = ''
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 DEFAULT_FROM_EMAIL = 'infomk@terra.com.br'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # auth
 LOGIN_URL = 'login'
