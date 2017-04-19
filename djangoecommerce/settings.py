@@ -145,7 +145,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 EMAIL_HOST = ''
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
-DEFAULT_FROM_EMAIL = 'renandidou@gmail.com'
+DEFAULT_FROM_EMAIL = 'infomk@terra.com.br'
 
 # auth
 LOGIN_URL = 'login'
