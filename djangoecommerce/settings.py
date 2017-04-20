@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 import os
 #import dj_database_url
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -26,6 +27,9 @@ DEBUG = False
 
 ALLOWED_HOSTS = []
 
+ADMINS = (
+    ('Renan', 'contato@gilenofilho.com.br'),
+)
 
 # Application definition
 
@@ -203,7 +207,51 @@ THUMBNAIL_ALIASES = {
         'product_image': {'size': (285, 160), 'crop': True},
     },
 }
-#THUMBNAIL_DEFAULT_STORAGE = DEFAULT_FILE_STORAGE
+THUMBNAIL_DEFAULT_STORAGE = DEFAULT_FILE_STORAGE
+
+# cache
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'cache',
+    }
+}
+
+# Logging
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        },
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+    },
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'checkout.views': {
+            'class': 'logging.FileHandler',
+            'level': 'DEBUG',
+            'filters': ['require_debug_true'],
+            'filename': os.path.join(BASE_DIR, 'checkout.views.log'),
+        }
+    },
+    'loggers': {
+        'checkout.views': {
+            'handlers': ['checkout.views'],
+            'level': 'DEBUG',
+        }
+    }
+}
 
 try:
     from .local_settings import *
