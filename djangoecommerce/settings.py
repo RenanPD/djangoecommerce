@@ -142,11 +142,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # E-mail
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = 'renanPD'
-EMAIL_HOST_PASSWORD = 'renan123'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 DEFAULT_FROM_EMAIL = 'renandidou@gmail.com'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
